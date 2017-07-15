@@ -1,3 +1,6 @@
 # html5
 Html5 ile ilgili çalışmalar.
-Bağzı şeyler
+
+- Templates
+- Custom Elements
+  - Core Functionality
