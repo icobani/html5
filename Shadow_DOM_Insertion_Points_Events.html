@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shadow DOM Insertion Points & Events</title>
+  <script type="text/javascript" language="javascript" src="http://livejs.com/live.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+
+
+  <style>
+    h1 {
+      font-family: 'Eczar', serif;
+      font-size: 16px;
+      color: azure;
+    }
+
+    p {
+      color: white;
+      font-family: 'Bellefair', serif;
+      font-size: 14px;
+    }
+
+    body {
+      background-color: darkslateblue
+    }
+  </style>
+
+</head>
+<body>
+<h1>Shadow DOM Insertion Points & Events</h1>
+<comment-form>
+  <h1>Lütfen konu ile ilgili bir açıklama giriniz</h1>
+  <p class="talimat">Kabak kafalı keriz kıralın kabak kafalı keriz kıralın kara kıllı kaniş köpeği</p>
+  <p class="footer">B1 Yönetim Sistemleri Yazılım ve Danışmanlık Ltd. Şti.</p>
+
+  Rafta var 5 şişe şişelerden biri yere düşerse. Falan filan
+</comment-form>
+
+
+<template>
+
+  <fieldset>
+    <legend>
+      <content select="h1"></content>
+    </legend>
+
+    <content select="p.talimat"></content>
+
+
+    <textarea style="width: 98%; height: 150px"></textarea>
+    <br/>
+    <input type="submit" value="Submit Comment">
+
+    <content select=".footer"></content>
+
+    <content></content>
+  </fieldset>
+</template>
+
+<script type="text/javascript" language="javascript" src="Shadow_DOM_Insertion_Points_Events.js"></script>
+</body>
+</html>

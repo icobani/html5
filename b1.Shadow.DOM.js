@@ -25,8 +25,10 @@ console.log(root.getElementById("msg").innerHTML);
 
 
 /**
- * Modüle tarzı bu şekilde
- * @type {{sayHi}}
+ * Modül yapısında aşağıdaki şekilde bir tanımlama yapılabilir
+ * Bu tanımlamayı ShadowDOM içinde bile yapsan capsül içine girmiş olmuyor.
+ * Dışarda genelde hala kullanılabilir fonksiyonlar oluyor.
+ * @type {{sayHi, sayMerhaba}}
  */
 var module = (function () {
   return {
