@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Import İşeri</title>
+  <link rel="import" href="hayalimdeki-garaj.html" id="dream-garage">
+  <script type="text/javascript" language="javascript" src="http://livejs.com/live.js"></script>
+</head>
+<body>
+
+
+<script>
+  var content = document.querySelector('#dream-garage').import;
+  var carlist = content.querySelector('ul');
+  document.body.appendChild(carlist)
+</script>
+</body>
+</html>

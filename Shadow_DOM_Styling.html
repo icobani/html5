@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shadow DOM Styling</title>
+  <script type="text/javascript" language="javascript" src="http://livejs.com/live.js"></script>
+
+</head>
+<body class="dark">
+<div id="host" class="warning">
+  <p>
+    host is styled via the host selector
+  </p>
+  <p id="hello">Merhaba</p>
+</div>
+
+<template>
+  <style>
+    /** aşağıdaki şekilde direk bu componenent için bir class tanımlaması yapabiliriz.
+
+    :host{
+      border: solid 1px chocolate;
+      width: 300px;
+    }
+    */
+
+    /***
+      Ancak aşağıdaki şekilde bir theme tanımı şekline çevirebiliyoruz.
+     */
+    :host(.error) {
+      border: solid 1px red;
+      width: 300px;
+    }
+
+    :host(.warning) {
+      border: solid 1px darkgreen;
+      width: 300px;
+    }
+
+    /***
+    hover için host'a class yazıldı
+     */
+    :host(:hover) {
+      background-color: gray;
+    }
+
+    :host-context(.dark) {
+      background-color: black;
+      color: whitesmoke;
+    }
+
+    ::content #hello {
+      background-color: white;
+      color: darkblue;
+    }
+  </style>
+  <content></content>
+</template>
+
+
+<script>
+  var host = document.querySelector('#host');
+  var root = host.createShadowRoot();
+  var template = document.querySelector('template');
+  root.appendChild(template.content);
+</script>
+</body>
+</html>

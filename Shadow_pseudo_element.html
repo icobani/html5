@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shadow Pseudo Selector</title>
+  <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+  <script type="text/javascript" language="javascript" src="http://livejs.com/live.js"></script>
+  <style>
+    car-list /deep/ li {
+      color: red;
+      font-size: 24px;
+      font-family: 'Bellefair', serif
+    }
+
+    p {
+      color: #262626;
+      font-size: 48px;
+      font-family: 'Eczar', serif;
+    }
+  </style>
+</head>
+<body>
+<car-list>
+  <dealer-list></dealer-list>
+</car-list>
+
+
+<template id="car">
+  <content select="#Header"></content>
+  <ul>
+    <li>Ferrari Enzom</li>
+    <li>Porsche 911</li>
+    <li>Dodge Caravan</li>
+  </ul>
+  <shadow></shadow>
+</template>
+
+
+<template id="dealer">
+  <content select="#Header"></content>
+  <ul>
+    <li>Levent Ferrari Enzo Bayii</li>
+    <li>Şişli Porsche 911 Bayii</li>
+    <li>Maslek Dodge Caravan Bayii</li>
+  </ul>
+</template>
+
+<script>
+  var CarList = Object.create(HTMLElement.prototype);
+
+  CarList.createdCallback = function () {
+    var template = document.querySelector('#car');
+    var templateClone = document.importNode(template.content, true);
+    this.createShadowRoot().appendChild(templateClone);
+  };
+
+  document.registerElement('car-list', {
+    prototype: CarList
+  });
+
+
+  var DealerList = Object.create(HTMLElement.prototype);
+
+  DealerList.createdCallback = function () {
+    var template = document.querySelector('#dealer');
+    var templateClone = document.importNode(template.content, true);
+    this.createShadowRoot().appendChild(templateClone);
+  };
+
+  document.registerElement('dealer-list', {
+    prototype: DealerList
+  });
+
+</script>
+</body>
+</html>
