@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shadow Insertation Point</title>
+
+  <script type="text/javascript" language="javascript" src="http://livejs.com/live.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+
+
+  <style>
+    h1 {
+      font-family: 'Eczar', serif;
+      font-size: 16px;
+      color: azure;
+    }
+
+    p {
+      color: white;
+      font-family: 'Bellefair', serif;
+      font-size: 14px;
+    }
+
+    body {
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+<div id="host">
+  Light DOM
+</div>
+
+
+<script>
+  var host = document.querySelector("#host");
+  var root1 = host.createShadowRoot();
+  var root2 = host.createShadowRoot();
+  var root3 = host.createShadowRoot();
+
+  root1.innerHTML = '<div>Root 1</div>';
+  //<shadow> etiketine dikkat.
+  root2.innerHTML = '<content></content><shadow></shadow><span>Root 2</span>';
+  root3.innerHTML = '<shadow></shadow><div>Root 3</div>';
+
+  // bir üstteki shadow root bu şekilde elde edilebiliyor.
+  console.log(root2.olderShadowRoot == root1);
+  console.log(host.shadowRoot == root3)
+
+
+</script>
+</body>
+</html>

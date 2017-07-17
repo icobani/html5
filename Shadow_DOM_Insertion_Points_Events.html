@@ -32,9 +32,10 @@
 <comment-form>
   <h1>Lütfen konu ile ilgili bir açıklama giriniz</h1>
   <p class="talimat">Kabak kafalı keriz kıralın kabak kafalı keriz kıralın kara kıllı kaniş köpeği</p>
+  <p class="talimat sıkıcı">Saçma sapan şeyler.</p>
   <p class="footer">B1 Yönetim Sistemleri Yazılım ve Danışmanlık Ltd. Şti.</p>
-
-  Rafta var 5 şişe şişelerden biri yere düşerse. Falan filan
+  <input type="button" value="İptal">
+  <p id="minik_aciklama">Gerekli kontrolleri yaptıktan sonra lütfen kaydet butonuna basınız.</p>
 </comment-form>
 
 
@@ -45,14 +46,19 @@
       <content select="h1"></content>
     </legend>
 
-    <content select="p.talimat"></content>
+
+    // sıkıcı talimatlardan sıkıcı olmayanları göster.
+    <content select="p.talimat:not(.sıkıcı)"></content>
 
 
     <textarea style="width: 98%; height: 150px"></textarea>
     <br/>
-    <input type="submit" value="Submit Comment">
+    <input type="submit" value="Kaydet">
+    <content select="input[type=button]"></content>
+
 
     <content select=".footer"></content>
+    <content select="#minik_aciklama"></content>
 
     <content></content>
   </fieldset>

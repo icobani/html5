@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Retargeting</title>
+
+  <script type="text/javascript" language="javascript" src="http://livejs.com/live.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+
+
+  <style>
+    h1 {
+      font-family: 'Eczar', serif;
+      font-size: 16px;
+      color: azure;
+    }
+
+    p {
+      color: white;
+      font-family: 'Bellefair', serif;
+      font-size: 14px;
+    }
+
+    body {
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+
+<button id="light-dom-button">Light DOM Button</button>
+
+<div id="host">
+  <button id="distributed">Distrubuted</button>
+
+</div>
+
+<template>
+  <button id="shadow-dom-button">Shadow DOM Button</button>
+  <content></content>
+  <select id="shadow">
+    <option>1</option>
+    <option>2</option>
+  </select>
+</template>
+
+<script>
+  var host = document.querySelector('#host');
+  var root = host.createShadowRoot();
+  var template = document.querySelector('template');
+  root.appendChild(document.importNode(template.content, true));
+
+
+  document.addEventListener('click', function (e) {
+    console.log(e.target.id + ' clicked');
+  });
+
+  // bu çalışmıyor böyle bişi gerekiyorsa bunu farklı düşünmek gerekir
+  // change gibi bir kaç event daha var.
+  document.addEventListener('change', function (e) {
+    console.log(e.target.id + ' changed');
+  })
+</script>
+</body>
+</html>
